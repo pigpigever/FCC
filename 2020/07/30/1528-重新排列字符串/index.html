@@ -11,17 +11,17 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="算法,LeetCode,字符串,数组," />
   
 
   
-    <meta name="description" content="Tonychen," />
+    <meta name="description" content="1528.重新排列字符串" />
   
   
   
   <link rel="icon" type="image/x-icon" href="/images/footer-logo.png">
   
-  <title>archives: 2020 [ Tonychen ]</title>
+  <title>1528.重新排列字符串 [ Tonychen ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -51,7 +51,7 @@
       
           
             
-              <li class="pure-menu-item actived"><a href="/archives" class="pure-menu-link">Archives</a></li>
+              <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">Archives</a></li>
             
           
       
@@ -69,141 +69,94 @@
 
   <div class="container" id="content-outer">
     <div class="inner" id="content-inner">
-      
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        1528.重新排列字符串
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-07-30T13:55:37.000Z">
+        2020-07-30
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 1 分钟</span>
+    </header>
 
-  
-  
+    <div class="post-content">
+      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个字符串 s 和一个 长度相同 的整数数组 indices 。<br>请你重新排列字符串 s ，其中第 i 个字符需要移动到 indices[i] 指示的位置。<br>返回重新排列后的字符串。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>将字符 <code>s[i]</code> 和对应的位置存入 <code>res</code> 数组，最后将 <code>res</code> 转为字符串即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">s</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">indices</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;string&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> restoreString = <span class="function"><span class="keyword">function</span>(<span class="params">s, indices</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.length; i++) &#123;</span><br><span class="line">        res[indices[i]] = s.charAt(i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+  </article>
+  <div class="toc-container">
     
-    
-    <section class="post page archives">
-      <h3 class="archive-year-wrap">
-        <a href="/archives/2020" class="archive-year">
-          2020
-        </a>
-      </h3>
-      <div class="archives">
-  
-  <div class="archive" >
-  <a class="post-go" href="/2020/07/16/291.单词规律II/">
-    <div>
-      <span class="date">
-        07-16
-      </span>
-      <span class="slash">/</span>
-      291.单词规律II
-    </div>
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol>
+  </div>
 
-    <!--<div class="excerpt">-->
-      <!--给你一种规律 pattern 和一个字符串 str，请你判断 str 是否遵循其相同的规律。 这里我们指的是 完全遵循，例如 pattern 里的每个字母和字符串 str 中每个 非空 单词之间，存在着双向连接的对应规律。-->
-    <!--</div>-->
-  </a>
 
+  </div>
 </div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2020/07/14/1219.黄金矿工/">
-    <div>
-      <span class="date">
-        07-14
-      </span>
-      <span class="slash">/</span>
-      1219. 黄金矿工
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!--你要开发一座金矿，地质勘测学家已经探明了这座金矿中的资源分布，并用大小为 m * n 的网格 grid 进行了标注。每个单元格中的整数就表示这一单元格中的黄金数量；如果该单元格是空的，那么就是 0。-->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2020/07/14/209.长度最小的子数组/">
-    <div>
-      <span class="date">
-        07-14
-      </span>
-      <span class="slash">/</span>
-      209. 长度最小的子数组
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!--给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。-->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2020/07/11/一文盘点那些常见的JS数组方法及Polyfill/">
-    <div>
-      <span class="date">
-        07-11
-      </span>
-      <span class="slash">/</span>
-      盘点那些常见的 JS 数组方法及 Polyfill
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!--虽然有时候遍历数组只需要 ``for`` 循环则足矣，但是如果 API 利用得当，往往能更大程度的提高代码的可读性，减少心智负担～-->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2020/07/11/93.复原IP地址/">
-    <div>
-      <span class="date">
-        07-11
-      </span>
-      <span class="slash">/</span>
-      93. 复原 IP 地址
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!--这道题咋一看很难，实际上题目里给出的条件已经足够用回溯来找到结果。-->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2020/05/17/Vue源码分析——深入理解keep-alive组件/">
-    <div>
-      <span class="date">
-        05-17
-      </span>
-      <span class="slash">/</span>
-      Vue 源码分析 —— 深入理解 keep-alive 组件
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!--<keep-alive> 是 Vue 的内置组件，用来包裹组件，达到缓存组件实例的作用～-->
-    <!--</div>-->
-  </a>
-
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 
 
-  </div></section>
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/07/30/1502-%E5%88%A4%E6%96%AD%E8%83%BD%E5%90%A6%E5%BD%A2%E6%88%90%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/" rel="next" title="1502.判断能否形成等差数列">
+          1502.判断能否形成等差数列
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+      </div>
+    </div>
+  
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <div id="gitalk-container"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            id: window.location.pathname,
+            repo: 'pigpigever.github.io',
+            owner: 'pigpigever',
+            admin: 'pigpigever'
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
 
     </div>
 
-    
-      <nav class="page-nav text-center">
-          <a class="extend prev" rel="prev" href="/archives/2020/">〈</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-      </nav>
     
 
   </div>
