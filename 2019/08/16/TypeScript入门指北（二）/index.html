@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="前端,TypeScript," />
+  
+
+  
+    <meta name="description" content="TypeScript入门指北（二）" />
+  
+  
+  
+  <link rel="icon" type="image/x-icon" href="/images/footer-logo.png">
+  
+  <title>TypeScript入门指北（二） [ Tonychen ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    
+    <span class="title" style="text-transform:none">Tonychen</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            
+              <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">Archives</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">Tags</a></li>
+            
+          
+      
+  </ul>
+   
+</nav>
+
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        TypeScript入门指北（二）
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2019-08-16T01:58:14.000Z">
+        2019-08-16
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 6 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <blockquote>
+<p>上篇文章我们提到了为什么要学 <code>TypeScript</code>， 以及通过 <code>TypeScript</code> 跟 <code>JavaScript</code> 的简单对比，熟悉了 <code>TypeScript</code> 一些较为基础的语法。</p>
+</blockquote>
+<p>学过面向对象的同学都知道，面向对象的三个基本要素就是：</p>
+<ul>
+<li><strong>封装</strong></li>
+<li><strong>继承</strong></li>
+<li><strong>多态</strong></li>
+</ul>
+<p>在 <code>TypeScript</code> 中，这几种语法都与之有密切的联系：</p>
+<ul>
+<li><strong>函数</strong></li>
+<li><strong>接口</strong></li>
+<li><strong>类</strong></li>
+<li><strong>泛型</strong></li>
+</ul>
+<p>当然，<strong>函数</strong> 和 <strong>接口</strong> 在<a href="https://juejin.im/post/6844903913343172616" target="_blank" rel="noopener">上篇文章</a>已经讲过了，这篇文章着重讲一下<strong>类</strong>。</p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>在面向对象编程(<code>OOP</code>)中，类是对对象的一个高度的抽象。打个比方，女朋友可以看成一个<strong>对象</strong>，因为女朋友是具体的一个人；而女人/人则可以看成一个类，因为它是泛指的。<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c95bc844664525?w=501&h=406&f=png&s=22955" alt=""></p>
+<p>根据这个关系，我们可以用 <code>TypeScript</code> 来定义一个 <code>Woman</code> 类并且 <code>new</code> 一个<strong>对象</strong>（女朋友）出来：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Woman &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman()</span><br></pre></td></tr></table></figure>
+<p>可以看到，这个<strong>对象</strong>什么都没有，接下来我们给她添加点属性上去，让她变得更立体一些。</p>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>属性包含：</p>
+<ul>
+<li><strong>私有属性</strong>（<code>private</code>）: 属性被声明为 <code>private</code>（私有）之后，不能在类之外的地方访问。</li>
+<li><strong>公有属性</strong>（<code>public</code>）：如果不标记，则属性默认被声明为 <code>public</code>（公有）。</li>
+<li><strong>保护属性</strong>（<code>protected</code>）：属性被声明为 <code>protected</code>（保护）之后，不能再类之外的地方访问，但是可以在派生类中访问，也就是说在它的子类中可以访问这个属性。</li>
+<li><strong>静态属性</strong>（<code>static</code>)：属性被声明为 <code>static</code>（静态），此时该属性属于<strong>类</strong>而不属于<strong>类</strong>的实例或者<strong>子类</strong>，相应的需要在属性前加上<strong>类名</strong>才能访问。</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2019/8/16/16c961b24af67323?w=827&h=782&f=png&s=49956" alt=""></p>
+<p>我们简单拓展下上面那段代码，给 <code>Woman</code> 类添加几个属性：</p>
+<ul>
+<li>姓名</li>
+<li>身高</li>
+<li>年龄</li>
+<li>…<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Woman &#123;</span><br><span class="line">    <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">private</span> age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+在拓展这个类的时候我们发现，其实 <code>Woman</code> 类还能够再抽象成 <strong>人类</strong>（<code>Person</code>)，而这就涉及到了继承。</li>
+</ul>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>我们定义一个 <code>Person</code> 类，并让 <code>Woman</code> 继承 <code>Person</code>：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">protected</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> age: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">constructor</span> (<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">        <span class="keyword">this</span>.height = height</span><br><span class="line">        <span class="keyword">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">class</span> Woman <span class="keyword">extends</span> Person &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name, height, age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman(<span class="string">'girl'</span>, <span class="number">180</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="抽象类和抽象方法"><a href="#抽象类和抽象方法" class="headerlink" title="抽象类和抽象方法"></a>抽象类和抽象方法</h4><p><strong>抽象类</strong> 和 <strong>抽象方法</strong> 的定义方式都是在前边加一个 <code>abstract</code> 关键字，不同的是，<strong>抽象类</strong> 可以包含具体的属性和函数实现，但是 <strong>抽象函数</strong> 则必须在子类中实现。换言之，<strong>抽象类</strong> 可以拥有自己的独立行为，但是 <strong>抽象函数</strong> 则跟 <strong>接口</strong>（<code>interface</code>）类似，不包括具体的实现。</p>
+<p>因此，上面的例子我们可以再进行拓展，将 <code>Person</code> 定义成一个抽象类，再让 <code>Woman</code> 继承它</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> Person &#123;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">protected</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> age: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">constructor</span> (<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">        <span class="keyword">this</span>.height = height</span><br><span class="line">        <span class="keyword">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">abstract</span> moYu (): <span class="built_in">void</span>;</span><br><span class="line">    walk (): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'walk'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">class</span> Woman <span class="keyword">extends</span> Person &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name, height, age)</span><br><span class="line">    &#125;</span><br><span class="line">    moYu () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'今天你摸鱼了吗？'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman(<span class="string">'girl'</span>, <span class="number">180</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/8/16/16c961f3181f6ce9?w=706&h=577&f=png&s=29858" alt=""><br>这里 <code>Person</code> 的属性是否定义，取决于 <code>Person</code> 中是否存在非抽象函数，否则没有必要写。</p>
+<p>系列文章：</p>
+<ul>
+<li><a href="https://juejin.im/post/6844903913343172616" target="_blank" rel="noopener">TypeScript 入门指北（一）</a></li>
+</ul>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://www.tslang.cn/docs/home.html" target="_blank" rel="noopener">TypeScript 中文文档</a></li>
+</ul>
+<p>练习地址：<a href="https://www.tslang.cn/play/index.html" target="_blank" rel="noopener">https://www.tslang.cn/play/index.html</a></p>
+
+    </div>
+
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#类"><span class="toc-text">类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#抽象类和抽象方法"><span class="toc-text">抽象类和抽象方法</span></a></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/08/14/TypeScript%E5%85%A5%E9%97%A8%E6%8C%87%E5%8C%97%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="TypeScript入门指北（一）">
+          TypeScript入门指北（一）
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/05/17/Vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E2%80%94%E2%80%94%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3keep-alive%E7%BB%84%E4%BB%B6/" rel="prev" title="Vue 源码分析 —— 深入理解 keep-alive 组件">
+            Vue 源码分析 —— 深入理解 keep-alive 组件
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <div id="gitalk-container"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            id: window.location.pathname,
+            repo: 'pigpigever.github.io',
+            owner: 'pigpigever',
+            admin: 'pigpigever'
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://github.com/fooying" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="/links">友情链接</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/fooying/hexo-theme-xoxo-plus" target="_blank">Theme xoxo-plus</a> |
+        <a class="bottom-item" href="/atom.xml">RSS</a>
+    </div>
+</footer>
+
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+  
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+</body>
+</html>
