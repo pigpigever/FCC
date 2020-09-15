@@ -1,55 +1,254 @@
-<!doctype html>
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
 <head>
-<meta charset="utf-8">
-<title>盘点常见的JSON用法 - Tonychen</title>
-<base href="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="canonical" href="https://pigpigever.github.io/2020/07/29/%E7%9B%98%E7%82%B9%E5%B8%B8%E8%A7%81%E7%9A%84JSON%E7%94%A8%E6%B3%95/">
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-
-<meta name="description" content="JSON 是一种语法，可以用来序列化对象、数组或者数字等数据类型。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="盘点常见的JSON用法">
-<meta property="og:url" content="https://pigpigever.github.io/2020/07/29/%E7%9B%98%E7%82%B9%E5%B8%B8%E8%A7%81%E7%9A%84JSON%E7%94%A8%E6%B3%95/index.html">
-<meta property="og:site_name" content="Tonychen">
-<meta property="og:description" content="JSON 是一种语法，可以用来序列化对象、数组或者数字等数据类型。">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://pigpigever.github.io/images/thumbnail/4.jpg">
-<meta property="article:published_time" content="2020-07-29T12:59:25.000Z">
-<meta property="article:modified_time" content="2020-08-10T15:19:07.785Z">
-<meta property="article:author" content="Tonychen">
-<meta property="article:tag" content="前端">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="JSON">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pigpigever.github.io/images/thumbnail/4.jpg">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>盘点常见的JSON用法 - Tonychen</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="JSON 是什么？
+JSON 是一种语法，可以用来序列化对象、数组或者数字等数据类型。换句话说，我们可以利用 JSON 来将数据转成字符串的形式。
+常见的 API
+JSON.parse
 
 
-<link href="//fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat" rel="stylesheet">
-<link href="https://unpkg.com/gitalk/dist/gitalk.css" rel="stylesheet">
-<link href="/styles.c3f8d35f4c49a6d852da.css" rel="stylesheet">
+功能
+还,"> 
+    <meta name="author" content="Tonychen"> 
+    <link rel="alternative" href="atom.xml" title="Tonychen" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
 
-<link rel="stylesheet" href="/theme.dd294144eb3bfe233964.css" is="theme">
-
-
-<script src="/config.ff54964a55f9de1b4683.js"></script>
-
-
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
 <meta name="generator" content="Hexo 4.2.1"></head>
-<body lang="en">
-<is-a></is-a>
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.17.0/js/md5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({
-  showProcessingMessages: false,
-  messageStyle: 'none',
-  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] }
-})
-</script>
-<script src="/runtime.0d15793f6e46723148c6.js"></script>
-<script src="/polyfills.6661dd3f63d336032841.js"></script>
-<script src="/main.7652f74988a605a4b23c.js"></script>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Tonychen</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://pigpigever.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">盘点常见的JSON用法</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">盘点常见的JSON用法</h1>
+        <div class="stuff">
+            <span>七月 29, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JSON/" rel="tag">JSON</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="json-是什么？">JSON 是什么？<a title="#json-是什么？" href="#json-是什么？"></a></h2>
+<p>JSON 是一种语法，可以用来序列化对象、数组或者数字等数据类型。换句话说，我们可以利用 JSON 来将数据转成字符串的形式。</p>
+<h2 id="常见的-api">常见的 API<a title="#常见的-api" href="#常见的-api"></a></h2>
+<h3 id="json.parse">JSON.parse<a title="#json.parse" href="#json.parse"></a></h3>
+<ul>
+<li>
+<p>功能</p>
+<p>还原被序列化的数据（反序列化），即将字符串还原为它本来的数据结构。</p>
+</li>
+<li>
+<p>参数</p>
+<ul>
+<li><code>text</code>，即将要被「反序列化」的字符串</li>
+<li><code>reviver</code>，处理字符串的回调函数，可以参与到「反序列化」的过程，遍历顺序是由内到外</li>
+</ul>
+</li>
+</ul>
+<h3 id="json.stringify">JSON.stringify<a title="#json.stringify" href="#json.stringify"></a></h3>
+<ul>
+<li>
+<p>功能</p>
+<p>序列化一个值，即将一个值转为字符串的形式。</p>
+</li>
+<li>
+<p>参数</p>
+<ul>
+<li><code>value</code>，将要被序列化的值</li>
+<li><code>replacer</code>
+<ol>
+<li>如果该值是函数，那么它会参与到序列化的过程当中</li>
+<li>如果该值是数组，那么只有包含在数组里的属性才会被序列化</li>
+<li>如果该值是 null 或者 undefined，那么所有属性都会被序列化</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用场景">使用场景<a title="#使用场景" href="#使用场景"></a></h2>
+<h3 id="本地缓存">本地缓存<a title="#本地缓存" href="#本地缓存"></a></h3>
+<p>经常使用的本地缓存如 <code>localStorage</code>，对于存入的数据是有要求的：键名和值都只能是 <code>string</code> 类型。<br>
+而这时 <code>JSON</code> 就可以派上用场了👇</p>
+<ul>
+<li>存储</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.set(key, <span class="built_in">JSON</span>.stringify(data))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>提取</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.getItem(key, <span class="built_in">JSON</span>.parse(str))</span><br></pre></td></tr></table></figure>
+<h4 id="处理-date-对象">处理 Date 对象<a title="#处理-date-对象" href="#处理-date-对象"></a></h4>
+<p>如果对象里有 <code>Date</code> 对象，那么序列化之后结果是这样的👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"2020-07-29T14:47:09.608Z"</span></span><br></pre></td></tr></table></figure>
+<p>这时候就头疼了，我们需要再写一个函数来处理反序列化之后的结果吗？<br>
+<img src="/images/JSON/1.jpeg" alt=""></p>
+<p>别忘了上面提到的参数，无论是 <code>parse</code> 还是 <code>stringify</code> 都允许传入一个参数来控制序列化/反序列化，因此我们可以这样来处理 <code>Date</code> 的对象👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    text: <span class="string">'just do it'</span>,</span><br><span class="line">    date: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> str = <span class="built_in">JSON</span>.stringify(obj)</span><br><span class="line"><span class="keyword">let</span> org = <span class="built_in">JSON</span>.parse(str, (key, val) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 如果是 date 就转成 Date</span></span><br><span class="line">    <span class="keyword">if</span> (key === <span class="string">'date'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="处理-regexp-对象">处理 RegExp 对象<a title="#处理-regexp-对象" href="#处理-regexp-对象"></a></h4>
+<p>现在场景更加复杂了，你需要处理 <code>RegExp</code> 对象了，这时候要怎么做呢？手快的同学可能就直接开动了👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    reg: <span class="regexp">/\d+/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> str = <span class="built_in">JSON</span>.stringify(obj)</span><br><span class="line"><span class="keyword">let</span> org = <span class="built_in">JSON</span>.parse(str)</span><br></pre></td></tr></table></figure>
+<p>实际上，直接序列化一个 <code>RegExp</code> 对象只会返回一个 <code>&quot;{}&quot;</code>（不信你试试）<br>
+<img src="/images/JSON/2.jpg" alt=""></p>
+<p>别忘了，<code>RegExp</code>  构造函数可以传入这两个参数：</p>
+<ul>
+<li><code>source</code></li>
+<li><code>flags</code></li>
+</ul>
+<p>因此我们只要对包含 <code>RegExp</code> 对象的属性在序列化与反序列化时做特别处理即可👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 序列化 RegExp 对象</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">reg</span>: <span class="regexp">/\d+/</span> &#125;</span><br><span class="line"><span class="keyword">let</span> str = <span class="built_in">JSON</span>.stringify(obj, (key, val) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (key === <span class="string">'reg'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            source: val.source,</span><br><span class="line">            flags: val.flags</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 反序列化</span></span><br><span class="line"><span class="keyword">let</span> org = <span class="built_in">JSON</span>.stringify(str, (key, val) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (key === <span class="string">'reg'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(val.source, val.flags)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="判断对象是否为空">判断对象是否为空<a title="#判断对象是否为空" href="#判断对象是否为空"></a></h3>
+<p>我们也可以利用 <code>JSON.stringify</code> 来判断某个对象是否为空（没有任何属性）👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isObjectEmpty = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(obj) === <span class="string">'&#123;&#125;'</span> &amp;&amp; !obj.__proto__</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结<a title="#总结" href="#总结"></a></h2>
+<p><img src="/images/JSON/3.svg" alt="" class="φcx"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 </html>

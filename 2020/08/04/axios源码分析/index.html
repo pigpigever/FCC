@@ -1,54 +1,266 @@
-<!doctype html>
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
 <head>
-<meta charset="utf-8">
-<title>深入理解 axios - Tonychen</title>
-<base href="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="canonical" href="https://pigpigever.github.io/2020/08/04/axios%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>深入理解 axios - Tonychen</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="axios 是什么
+axios 是基于 Promise 并用于浏览器和 node.js 的 HTTP 请求库。
+axios 的常见功能
+支持请求、响应拦截
+123456789101112131415,"> 
+    <meta name="author" content="Tonychen"> 
+    <link rel="alternative" href="atom.xml" title="Tonychen" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
 
-<meta name="description" content="axios 是基于 Promise 并用于浏览器和 node.js 的 HTTP 请求库。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="深入理解 axios">
-<meta property="og:url" content="https://pigpigever.github.io/2020/08/04/axios%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/index.html">
-<meta property="og:site_name" content="Tonychen">
-<meta property="og:description" content="axios 是基于 Promise 并用于浏览器和 node.js 的 HTTP 请求库。">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://pigpigever.github.io/images/thumbnail/5.jpg">
-<meta property="article:published_time" content="2020-08-04T09:02:16.000Z">
-<meta property="article:modified_time" content="2020-08-12T09:59:05.080Z">
-<meta property="article:author" content="Tonychen">
-<meta property="article:tag" content="源码">
-<meta property="article:tag" content="阅读">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pigpigever.github.io/images/thumbnail/5.jpg">
-
-
-<link href="//fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat" rel="stylesheet">
-<link href="https://unpkg.com/gitalk/dist/gitalk.css" rel="stylesheet">
-<link href="/styles.c3f8d35f4c49a6d852da.css" rel="stylesheet">
-
-<link rel="stylesheet" href="/theme.dd294144eb3bfe233964.css" is="theme">
-
-
-<script src="/config.ff54964a55f9de1b4683.js"></script>
-
-
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
 <meta name="generator" content="Hexo 4.2.1"></head>
-<body lang="en">
-<is-a></is-a>
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.17.0/js/md5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({
-  showProcessingMessages: false,
-  messageStyle: 'none',
-  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] }
-})
-</script>
-<script src="/runtime.0d15793f6e46723148c6.js"></script>
-<script src="/polyfills.6661dd3f63d336032841.js"></script>
-<script src="/main.7652f74988a605a4b23c.js"></script>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Tonychen</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://pigpigever.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">深入理解 axios</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">深入理解 axios</h1>
+        <div class="stuff">
+            <span>八月 04, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%BA%90%E7%A0%81/" rel="tag">源码</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E9%98%85%E8%AF%BB/" rel="tag">阅读</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="axios-是什么">axios 是什么<a title="#axios-是什么" href="#axios-是什么"></a></h2>
+<p><code>axios</code> 是基于 <code>Promise</code> 并用于浏览器和 <code>node.js</code> 的 <code>HTTP</code> 请求库。</p>
+<h2 id="axios-的常见功能">axios 的常见功能<a title="#axios-的常见功能" href="#axios-的常见功能"></a></h2>
+<h3 id="支持请求、响应拦截">支持请求、响应拦截<a title="#支持请求、响应拦截" href="#支持请求、响应拦截"></a></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Add a request interceptor</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something before request is sent</span></span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with request error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add a response interceptor</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Any status code that lie within the range of 2xx cause this function to trigger</span></span><br><span class="line">    <span class="comment">// Do something with response data</span></span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Any status codes that falls outside the range of 2xx cause this function to trigger</span></span><br><span class="line">    <span class="comment">// Do something with response error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="取消请求">取消请求<a title="#取消请求" href="#取消请求"></a></h3>
+<ol>
+<li>通过 <code>CancelToken.source</code> 这个工厂函数来获取 <code>cancel</code> 函数。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CancelToken = axios.CancelToken;</span><br><span class="line"><span class="keyword">const</span> source = CancelToken.source();</span><br><span class="line"></span><br><span class="line">axios.get(<span class="string">'/user/12345'</span>, &#123;</span><br><span class="line">  cancelToken: source.token</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">thrown</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (axios.isCancel(thrown)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Request canceled'</span>, thrown.message);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// handle error</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">axios.post(<span class="string">'/user/12345'</span>, &#123;</span><br><span class="line">  name: <span class="string">'new name'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  cancelToken: source.token</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// cancel the request (the message parameter is optional)</span></span><br><span class="line">source.cancel(<span class="string">'Operation canceled by the user.'</span>);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>通过 <code>CancelToken</code> 的构造函数来获取 <code>cancel</code> 函数。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CancelToken = axios.CancelToken;</span><br><span class="line"><span class="keyword">let</span> cancel;</span><br><span class="line"></span><br><span class="line">axios.get(<span class="string">'/user/12345'</span>, &#123;</span><br><span class="line">  cancelToken: <span class="keyword">new</span> CancelToken(<span class="function"><span class="keyword">function</span> <span class="title">executor</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// An executor function receives a cancel function as a parameter</span></span><br><span class="line">    cancel = c;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// cancel the request</span></span><br><span class="line">cancel();</span><br></pre></td></tr></table></figure>
+<h3 id="预防-xsrf">预防 <code>XSRF</code><a title="#预防-xsrf" href="#预防-xsrf"></a></h3>
+<p>可以通过设置 <code>XSRF token</code> 来预防 <code>XSRF/CSRF</code>。</p>
+<ul>
+<li>支持 <code>Promise API</code></li>
+<li>获取上传、下载进度</li>
+</ul>
+<h2 id="源码分析">源码分析<a title="#源码分析" href="#源码分析"></a></h2>
+<h3 id="目录">目录<a title="#目录" href="#目录"></a></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">├── adapters</span><br><span class="line">│   ├── README.md</span><br><span class="line">│   ├── http.js</span><br><span class="line">│   └── xhr.js</span><br><span class="line">├── axios.js</span><br><span class="line">├── cancel</span><br><span class="line">│   ├── Cancel.js</span><br><span class="line">│   ├── CancelToken.js</span><br><span class="line">│   └── isCancel.js</span><br><span class="line">├── core</span><br><span class="line">│   ├── Axios.js</span><br><span class="line">│   ├── InterceptorManager.js</span><br><span class="line">│   ├── README.md</span><br><span class="line">│   ├── buildFullPath.js</span><br><span class="line">│   ├── createError.js</span><br><span class="line">│   ├── dispatchRequest.js</span><br><span class="line">│   ├── enhanceError.js</span><br><span class="line">│   ├── mergeConfig.js</span><br><span class="line">│   ├── settle.js</span><br><span class="line">│   └── transformData.js</span><br><span class="line">├── defaults.js</span><br><span class="line">├── helpers</span><br><span class="line">│   ├── README.md</span><br><span class="line">│   ├── bind.js</span><br><span class="line">│   ├── buildURL.js</span><br><span class="line">│   ├── combineURLs.js</span><br><span class="line">│   ├── cookies.js</span><br><span class="line">│   ├── deprecatedMethod.js</span><br><span class="line">│   ├── isAbsoluteURL.js</span><br><span class="line">│   ├── isURLSameOrigin.js</span><br><span class="line">│   ├── normalizeHeaderName.js</span><br><span class="line">│   ├── parseHeaders.js</span><br><span class="line">│   └── spread.js</span><br><span class="line">└── utils.js</span><br></pre></td></tr></table></figure>
+<h3 id="核心功能">核心功能<a title="#核心功能" href="#核心功能"></a></h3>
+<h4 id="axios-构造函数">Axios 构造函数<a title="#axios-构造函数" href="#axios-构造函数"></a></h4>
+<p>一般来说，构造函数起到一个初始化内部对象的作用，当然 <code>axios</code> 也不例外👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new instance of Axios</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>instanceConfig The default config for the instance</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Axios</span>(<span class="params">instanceConfig</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.defaults = instanceConfig;</span><br><span class="line">  <span class="keyword">this</span>.interceptors = &#123;</span><br><span class="line">    request: <span class="keyword">new</span> InterceptorManager(),</span><br><span class="line">    response: <span class="keyword">new</span> InterceptorManager()</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="axios.prototype.request">Axios.prototype.request<a title="#axios.prototype.request" href="#axios.prototype.request"></a></h4>
+<p>这个函数一共做了这些事情：</p>
+<ol>
+<li>合并配置</li>
+<li>设置请求方法（也可以归到上一步）</li>
+<li>绑定拦截器并生成 <code>promise</code> 队列</li>
+<li>执行 <code>promise</code> 队列</li>
+<li>返回执行结果</li>
+</ol>
+<p>可以说，理解了这段描述，就能理清 <code>axios</code> 大致的流程了。下面是具体的代码👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Dispatch a request</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>config The config specific for this request (merged with this.defaults)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Axios.prototype.request = <span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*eslint no-param-reassign:0*/</span></span><br><span class="line">  <span class="comment">// Allow for axios('example/url'[, config]) a la fetch API</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> config === <span class="string">'string'</span>) &#123;</span><br><span class="line">    config = <span class="built_in">arguments</span>[<span class="number">1</span>] || &#123;&#125;;</span><br><span class="line">    config.url = <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    config = config || &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  config = mergeConfig(<span class="keyword">this</span>.defaults, config);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Set config.method</span></span><br><span class="line">  <span class="keyword">if</span> (config.method) &#123;</span><br><span class="line">    config.method = config.method.toLowerCase();</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.defaults.method) &#123;</span><br><span class="line">    config.method = <span class="keyword">this</span>.defaults.method.toLowerCase();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    config.method = <span class="string">'get'</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Hook up interceptors middleware</span></span><br><span class="line">  <span class="keyword">var</span> chain = [dispatchRequest, <span class="literal">undefined</span>];</span><br><span class="line">  <span class="keyword">var</span> promise = <span class="built_in">Promise</span>.resolve(config);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.interceptors.request.forEach(<span class="function"><span class="keyword">function</span> <span class="title">unshiftRequestInterceptors</span>(<span class="params">interceptor</span>) </span>&#123;</span><br><span class="line">    chain.unshift(interceptor.fulfilled, interceptor.rejected);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.interceptors.response.forEach(<span class="function"><span class="keyword">function</span> <span class="title">pushResponseInterceptors</span>(<span class="params">interceptor</span>) </span>&#123;</span><br><span class="line">    chain.push(interceptor.fulfilled, interceptor.rejected);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (chain.length) &#123;</span><br><span class="line">    promise = promise.then(chain.shift(), chain.shift());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> promise;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以看出，「拦截器」这个功能，无非是将「拦截器」和实际的请求拼成一个队列，最后 <code>axios</code> 抛出的 <code>promise</code> 对象其实就是<br>
+队列中最后一个任务执行之后返回的结果。</p>
+<p><img src="/images/axios/axios.jpg" alt="" class="φcx"></p>
+<h5 id="dispatchrequest">dispatchRequest<a title="#dispatchrequest" href="#dispatchrequest"></a></h5>
+<p>可以看出 <code>dispatchRequest</code> 在 <code>Axios.prototype.request</code> 中被放入到 <code>promise</code> 队列中执行，其实它就是实际发起请求的函数。<br>
+这个方法的实现可以分几个步骤来看：</p>
+<ol>
+<li>设置、合并请求头</li>
+<li>清除 <code>headers</code> 里的无用属性</li>
+<li>调用 <code>adapter</code> 方法发起请求</li>
+</ol>
+<h5 id="adapter">adapter<a title="#adapter" href="#adapter"></a></h5>
+<h4 id="interceptormanager">InterceptorManager<a title="#interceptormanager" href="#interceptormanager"></a></h4>
+<p><code>Axios</code> 封装了 <code>InterceptorManager</code>，用来管理注册的拦截器。</p>
+<h5 id="构造函数">构造函数<a title="#构造函数" href="#构造函数"></a></h5>
+<p>构造函数里只声明了一个数组 <code>handlers</code>，用来保存拦截器的回调。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">InterceptorManager</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.handlers = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="interceptormanager.prototype.use">InterceptorManager.prototype.use<a title="#interceptormanager.prototype.use" href="#interceptormanager.prototype.use"></a></h5>
+<p><code>InterceptorManager.prototype.use</code> 主要将拦截器存入 <code>handlers</code>，调用之后返回 <code>this.handler.length - 1</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">InterceptorManager.prototype.use = <span class="function"><span class="keyword">function</span> <span class="title">use</span>(<span class="params">fulfilled, rejected</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.handlers.push(&#123;</span><br><span class="line">    fulfilled: fulfilled,</span><br><span class="line">    rejected: rejected</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.handlers.length - <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="interceptormanager.prototype.eject">InterceptorManager.prototype.eject<a title="#interceptormanager.prototype.eject" href="#interceptormanager.prototype.eject"></a></h5>
+<p><code>InterceptorManager.prototype.eject</code> 主要将指定的拦截器从 <code>handlers</code> 中移除。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">InterceptorManager.prototype.eject = <span class="function"><span class="keyword">function</span> <span class="title">eject</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.handlers[id]) &#123;</span><br><span class="line">    <span class="keyword">this</span>.handlers[id] = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="interceptormanager.prototype.foreach">InterceptorManager.prototype.forEach<a title="#interceptormanager.prototype.foreach" href="#interceptormanager.prototype.foreach"></a></h5>
+<p><code>InterceptorManager.prototype.forEach</code> 需要传入一个参数 <code>fn</code>，之后会遍历 <code>handlers</code> 并以 <code>handlers</code> 中的拦截器 <code>h</code> 为参数，挨个执行 <code>fn(h)</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">InterceptorManager.prototype.forEach = <span class="function"><span class="keyword">function</span> <span class="title">forEach</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  utils.forEach(<span class="keyword">this</span>.handlers, <span class="function"><span class="keyword">function</span> <span class="title">forEachHandler</span>(<span class="params">h</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (h !== <span class="literal">null</span>) &#123;</span><br><span class="line">      fn(h);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="小结">小结<a title="#小结" href="#小结"></a></h5>
+<p><img src="/images/axios/InterceptorManage.png" alt="" class="φcx"></p>
+<h4 id="canceltoken">CancelToken<a title="#canceltoken" href="#canceltoken"></a></h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A `CancelToken` is an object that can be used to request cancellation of an operation.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Function&#125;</span> </span>executor The executor function.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CancelToken</span>(<span class="params">executor</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> executor !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'executor must be a function.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> resolvePromise;</span><br><span class="line">  <span class="keyword">this</span>.promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> <span class="title">promiseExecutor</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    resolvePromise = resolve;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> token = <span class="keyword">this</span>;</span><br><span class="line">  executor(<span class="function"><span class="keyword">function</span> <span class="title">cancel</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (token.reason) &#123;</span><br><span class="line">      <span class="comment">// Cancellation has already been requested</span></span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    token.reason = <span class="keyword">new</span> Cancel(message);</span><br><span class="line">    resolvePromise(token.reason);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码并不难懂，主要实现这些功能：</p>
+<ul>
+<li>执行传入 <code>CancelToken</code> 的参数 <code>executor</code></li>
+<li>挂载一个 <code>promise</code> 并在 <code>executor</code> 执行之后 <code>resolvePromise</code>，换句话说，可以通过 <code>this.promise</code> 来获取 <code>executor</code> 的执行结果。</li>
+</ul>
+<p>不过，眼尖的同学可以看到代码中出现了 <code>Cancel</code> 这个构造函数，它又有什么作用呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A `Cancel` is an object that is thrown when an operation is canceled.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string=&#125;</span> </span>message The message.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cancel</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.message = message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Cancel.prototype.toString = <span class="function"><span class="keyword">function</span> <span class="title">toString</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Cancel'</span> + (<span class="keyword">this</span>.message ? <span class="string">': '</span> + <span class="keyword">this</span>.message : <span class="string">''</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Cancel.prototype.__CANCEL__ = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<p>OK，其实 <code>Cancel</code> 不过是用来存放 <code>message</code>，它就是个「工具人」🐶</p>
+<h5 id="canceltoken.source">CancelToken.source<a title="#canceltoken.source" href="#canceltoken.source"></a></h5>
+<p>当然，<code>axios</code> 还提供了另外一个方法。可以看到 <code>CancelToken</code> 上挂载了一个 <code>source</code> 函数，同样它也可以用来获取 <code>token</code> 并取消请求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns an object that contains a new `CancelToken` and a function that, when called,</span></span><br><span class="line"><span class="comment"> * cancels the `CancelToken`.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">CancelToken.source = <span class="function"><span class="keyword">function</span> <span class="title">source</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> cancel;</span><br><span class="line">  <span class="keyword">var</span> token = <span class="keyword">new</span> CancelToken(<span class="function"><span class="keyword">function</span> <span class="title">executor</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">    cancel = c;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    token: token,</span><br><span class="line">    cancel: cancel</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="canceltoken.prototype.throwifrequested">CancelToken.prototype.throwIfRequested<a title="#canceltoken.prototype.throwifrequested" href="#canceltoken.prototype.throwifrequested"></a></h5>
+<p>请求取消时，就可以利用 <code>throwIfRequested</code> 来抛出取消的 <code>reason</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Throws a `Cancel` if cancellation has been requested.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">CancelToken.prototype.throwIfRequested = <span class="function"><span class="keyword">function</span> <span class="title">throwIfRequested</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.reason) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">this</span>.reason;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="小结-1">小结<a title="#小结-1" href="#小结-1"></a></h5>
+<p><img src="/images/axios/cancel.png" alt="" class="φcx"></p>
+<h2 id="参考资料">参考资料<a title="#参考资料" href="#参考资料"></a></h2>
+<ul>
+<li><a href="https://github.com/axios/axios" target="_blank">axios 文档</a></li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 </html>

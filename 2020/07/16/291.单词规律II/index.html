@@ -1,55 +1,201 @@
-<!doctype html>
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
 <head>
-<meta charset="utf-8">
-<title>291.单词规律II - Tonychen</title>
-<base href="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="canonical" href="https://pigpigever.github.io/2020/07/16/291.%E5%8D%95%E8%AF%8D%E8%A7%84%E5%BE%8BII/">
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>291.单词规律II - Tonychen</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="题目来源
+题目
+给你一种规律 pattern 和一个字符串 str，请你判断 str 是否遵循其相同的规律。
+这里我们指的是 完全遵循，例如 pattern 里的每个字母和字符串 str 中每个 非,"> 
+    <meta name="author" content="Tonychen"> 
+    <link rel="alternative" href="atom.xml" title="Tonychen" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
 
-<meta name="description" content="给你一种规律 pattern 和一个字符串 str，请你判断 str 是否遵循其相同的规律。 这里我们指的是 完全遵循，例如 pattern 里的每个字母和字符串 str 中每个 非空 单词之间，存在着双向连接的对应规律。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="291.单词规律II">
-<meta property="og:url" content="https://pigpigever.github.io/2020/07/16/291.%E5%8D%95%E8%AF%8D%E8%A7%84%E5%BE%8BII/index.html">
-<meta property="og:site_name" content="Tonychen">
-<meta property="og:description" content="给你一种规律 pattern 和一个字符串 str，请你判断 str 是否遵循其相同的规律。 这里我们指的是 完全遵循，例如 pattern 里的每个字母和字符串 str 中每个 非空 单词之间，存在着双向连接的对应规律。">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://pigpigever.github.io/images/thumbnail/7.jpg">
-<meta property="article:published_time" content="2020-07-15T16:48:25.000Z">
-<meta property="article:modified_time" content="2020-08-10T15:18:18.736Z">
-<meta property="article:author" content="Tonychen">
-<meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="算法">
-<meta property="article:tag" content="回溯算法">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pigpigever.github.io/images/thumbnail/7.jpg">
-
-
-<link href="//fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat" rel="stylesheet">
-<link href="https://unpkg.com/gitalk/dist/gitalk.css" rel="stylesheet">
-<link href="/styles.c3f8d35f4c49a6d852da.css" rel="stylesheet">
-
-<link rel="stylesheet" href="/theme.dd294144eb3bfe233964.css" is="theme">
-
-
-<script src="/config.ff54964a55f9de1b4683.js"></script>
-
-
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
 <meta name="generator" content="Hexo 4.2.1"></head>
-<body lang="en">
-<is-a></is-a>
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.17.0/js/md5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({
-  showProcessingMessages: false,
-  messageStyle: 'none',
-  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] }
-})
-</script>
-<script src="/runtime.0d15793f6e46723148c6.js"></script>
-<script src="/polyfills.6661dd3f63d336032841.js"></script>
-<script src="/main.7652f74988a605a4b23c.js"></script>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Tonychen</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://pigpigever.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">291.单词规律II</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">291.单词规律II</h1>
+        <div class="stuff">
+            <span>七月 16, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" rel="tag">回溯算法</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><a href="https://leetcode-cn.com/problems/word-pattern-ii/" target="_blank">题目来源</a></p>
+<h2 id="题目">题目<a title="#题目" href="#题目"></a></h2>
+<p>给你一种规律 pattern 和一个字符串 str，请你判断 str 是否遵循其相同的规律。<br>
+这里我们指的是 完全遵循，例如 pattern 里的每个字母和字符串 str 中每个 非空 单词之间，存在着双向连接的对应规律。</p>
+<p>示例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: pattern &#x3D; &quot;abab&quot;, str &#x3D; &quot;redblueredblue&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p>示例2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: pattern &#x3D; &quot;aaaa&quot;, str &#x3D; &quot;asdasdasdasd&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p>示例2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: pattern &#x3D; &quot;aabb&quot;, str &#x3D; &quot;xyzabcxzyabc&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<p>提示：</p>
+<ul>
+<li>你可以默认 pattern 和 str 都只会包含小写字母。</li>
+</ul>
+<h2 id="解题思路">解题思路<a title="#解题思路" href="#解题思路"></a></h2>
+<ul>
+<li>设置两个 <code>map</code> 分别为 <code>forward</code> 和 <code>reverse</code>，用来匹配 <code>a--&gt; b</code> 和 <code>b --&gt; a</code>。</li>
+<li>对于键值 <code>pattern[index]</code> 和 <code>currStr</code>，如果存在 <code>forward.get(pattern[index]) !== currStr ||| reverse.get(currStr) !== pattern[index]</code>，说明跟之前匹配的规律不一样，这个时候跳过即可。</li>
+<li>设置键值对应关系（对于没有之前保存过的值）</li>
+<li>递归环节……</li>
+<li>如果暂时不能判断形成了「单词规律」，那么要把对应的 <code>key</code> 值从 <code>map</code> 中删除。注意如果在上一个递归已经形成了当前 <code>key</code> 的「单词规律」，那么它是不能被删除的，因为删除了之后会影响到下次匹配的情况。</li>
+</ul>
+<h2 id="代码">代码<a title="#代码" href="#代码"></a></h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">pattern</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">str</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> wordPatternMatch = <span class="function"><span class="keyword">function</span>(<span class="params">pattern, str</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断是否是匹配的单词规律</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">index</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">str</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;map&#125;</span> <span class="variable">forward</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;map&#125;</span> <span class="variable">reverse</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">const</span> isMatch = <span class="function">(<span class="params">index, str, forward, reverse</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= pattern.length) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!str) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= str.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 假设之前已经有这段匹配了</span></span><br><span class="line">            <span class="comment">// 那么先暂存之前建立的双向对应关系</span></span><br><span class="line">            <span class="keyword">const</span> currStr = str.slice(<span class="number">0</span>, i)</span><br><span class="line">            <span class="keyword">const</span> prevPattern = forward.get(pattern[index])</span><br><span class="line">            <span class="keyword">const</span> prevStr = reverse.get(currStr)</span><br><span class="line">            <span class="comment">// 如果跟之前存入的值不匹配就跳过</span></span><br><span class="line">            <span class="keyword">if</span> (forward.has(pattern[index]) &amp;&amp; prevPattern !== currStr) &#123;</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (reverse.has(currStr) &amp;&amp; prevStr !== pattern[index]) &#123;</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 设置新的值</span></span><br><span class="line">            <span class="comment">// 注意这里判断一个即可（因为它们是关联的）</span></span><br><span class="line">            <span class="keyword">if</span> (!forward.has(pattern[index])) &#123;</span><br><span class="line">                forward.set(pattern[index], currStr)</span><br><span class="line">                reverse.set(currStr, pattern[index])</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (isMatch(index + <span class="number">1</span>, str.slice(i), forward, reverse)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果之前的值为空的话现在就可以删</span></span><br><span class="line">            <span class="comment">// 不然涉及到之前的键值匹配问题</span></span><br><span class="line">            <span class="comment">// 删了的话会影响到后面的匹配</span></span><br><span class="line">            <span class="keyword">if</span> (!prevPattern) &#123;</span><br><span class="line">                forward.delete(pattern[index])</span><br><span class="line">                reverse.delete(currStr)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果都为空说明完全匹配</span></span><br><span class="line">    <span class="keyword">if</span> (!pattern &amp;&amp; !str) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果其中有一个为空了说明不匹配</span></span><br><span class="line">    <span class="keyword">if</span> (!pattern || !str) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isMatch(<span class="number">0</span>, str, <span class="keyword">new</span> <span class="built_in">Map</span>(), <span class="keyword">new</span> <span class="built_in">Map</span>())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 </html>

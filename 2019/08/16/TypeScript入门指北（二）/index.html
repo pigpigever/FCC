@@ -1,54 +1,236 @@
-<!doctype html>
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
 <head>
-<meta charset="utf-8">
-<title>TypeScript入门指北（二） - Tonychen</title>
-<base href="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="canonical" href="https://pigpigever.github.io/2019/08/16/TypeScript%E5%85%A5%E9%97%A8%E6%8C%87%E5%8C%97%EF%BC%88%E4%BA%8C%EF%BC%89/">
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TypeScript入门指北（二） - Tonychen</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="
+上篇文章我们提到了为什么要学 TypeScript， 以及通过 TypeScript 跟 JavaScript 的简单对比，熟悉了 TypeScript 一些较为基础的语法。
 
-<meta name="description" content="上篇文章我们提到了为什么要学 &#96;&#96;TypeScript&#96;&#96;， 以及通过 &#96;&#96;TypeScript&#96;&#96; 跟 &#96;&#96;JavaScript&#96;&#96; 的简单对比，熟悉了 &#96;&#96;TypeScript&#96;&#96; 一些较为基础的语法。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TypeScript入门指北（二）">
-<meta property="og:url" content="https://pigpigever.github.io/2019/08/16/TypeScript%E5%85%A5%E9%97%A8%E6%8C%87%E5%8C%97%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
-<meta property="og:site_name" content="Tonychen">
-<meta property="og:description" content="上篇文章我们提到了为什么要学 &#96;&#96;TypeScript&#96;&#96;， 以及通过 &#96;&#96;TypeScript&#96;&#96; 跟 &#96;&#96;JavaScript&#96;&#96; 的简单对比，熟悉了 &#96;&#96;TypeScript&#96;&#96; 一些较为基础的语法。">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://pigpigever.github.io/images/thumbnail/6.jpg">
-<meta property="article:published_time" content="2019-08-16T01:58:14.000Z">
-<meta property="article:modified_time" content="2020-08-10T15:18:44.853Z">
-<meta property="article:author" content="Tonychen">
-<meta property="article:tag" content="前端">
-<meta property="article:tag" content="TypeScript">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pigpigever.github.io/images/thumbnail/6.jpg">
+学过面向对象的同学,"> 
+    <meta name="author" content="Tonychen"> 
+    <link rel="alternative" href="atom.xml" title="Tonychen" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
 
-
-<link href="//fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat" rel="stylesheet">
-<link href="https://unpkg.com/gitalk/dist/gitalk.css" rel="stylesheet">
-<link href="/styles.c3f8d35f4c49a6d852da.css" rel="stylesheet">
-
-<link rel="stylesheet" href="/theme.dd294144eb3bfe233964.css" is="theme">
-
-
-<script src="/config.ff54964a55f9de1b4683.js"></script>
-
-
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
 <meta name="generator" content="Hexo 4.2.1"></head>
-<body lang="en">
-<is-a></is-a>
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.17.0/js/md5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({
-  showProcessingMessages: false,
-  messageStyle: 'none',
-  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] }
-})
-</script>
-<script src="/runtime.0d15793f6e46723148c6.js"></script>
-<script src="/polyfills.6661dd3f63d336032841.js"></script>
-<script src="/main.7652f74988a605a4b23c.js"></script>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Tonychen</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://pigpigever.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">TypeScript入门指北（二）</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">TypeScript入门指北（二）</h1>
+        <div class="stuff">
+            <span>八月 16, 2019</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <blockquote>
+<p>上篇文章我们提到了为什么要学 <code>TypeScript</code>， 以及通过 <code>TypeScript</code> 跟 <code>JavaScript</code> 的简单对比，熟悉了 <code>TypeScript</code> 一些较为基础的语法。</p>
+</blockquote>
+<p>学过面向对象的同学都知道，面向对象的三个基本要素就是：</p>
+<ul>
+<li><strong>封装</strong></li>
+<li><strong>继承</strong></li>
+<li><strong>多态</strong></li>
+</ul>
+<p>在 <code>TypeScript</code> 中，这几种语法都与之有密切的联系：</p>
+<ul>
+<li><strong>函数</strong></li>
+<li><strong>接口</strong></li>
+<li><strong>类</strong></li>
+<li><strong>泛型</strong></li>
+</ul>
+<p>当然，<strong>函数</strong> 和 <strong>接口</strong> 在<a href="https://juejin.im/post/6844903913343172616" target="_blank">上篇文章</a>已经讲过了，这篇文章着重讲一下<strong>类</strong>。</p>
+<h3 id="类">类<a title="#类" href="#类"></a></h3>
+<p>在面向对象编程(<code>OOP</code>)中，类是对对象的一个高度的抽象。打个比方，女朋友可以看成一个<strong>对象</strong>，因为女朋友是具体的一个人；而女人/人则可以看成一个类，因为它是泛指的。<br>
+<img src="https://user-gold-cdn.xitu.io/2019/8/15/16c95bc844664525?w=501&amp;h=406&amp;f=png&amp;s=22955" alt=""></p>
+<p>根据这个关系，我们可以用 <code>TypeScript</code> 来定义一个 <code>Woman</code> 类并且 <code>new</code> 一个<strong>对象</strong>（女朋友）出来：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Woman &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman()</span><br></pre></td></tr></table></figure>
+<p>可以看到，这个<strong>对象</strong>什么都没有，接下来我们给她添加点属性上去，让她变得更立体一些。</p>
+<h4 id="属性">属性<a title="#属性" href="#属性"></a></h4>
+<p>属性包含：</p>
+<ul>
+<li><strong>私有属性</strong>（<code>private</code>）: 属性被声明为 <code>private</code>（私有）之后，不能在类之外的地方访问。</li>
+<li><strong>公有属性</strong>（<code>public</code>）：如果不标记，则属性默认被声明为 <code>public</code>（公有）。</li>
+<li><strong>保护属性</strong>（<code>protected</code>）：属性被声明为 <code>protected</code>（保护）之后，不能再类之外的地方访问，但是可以在派生类中访问，也就是说在它的子类中可以访问这个属性。</li>
+<li><strong>静态属性</strong>（<code>static</code>)：属性被声明为 <code>static</code>（静态），此时该属性属于<strong>类</strong>而不属于<strong>类</strong>的实例或者<strong>子类</strong>，相应的需要在属性前加上<strong>类名</strong>才能访问。</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2019/8/16/16c961b24af67323?w=827&amp;h=782&amp;f=png&amp;s=49956" alt="" class="φcx"></p>
+<p>我们简单拓展下上面那段代码，给 <code>Woman</code> 类添加几个属性：</p>
+<ul>
+<li>姓名</li>
+<li>身高</li>
+<li>年龄</li>
+<li>…</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Woman &#123;</span><br><span class="line">    <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">private</span> age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在拓展这个类的时候我们发现，其实 <code>Woman</code> 类还能够再抽象成 <strong>人类</strong>（<code>Person</code>)，而这就涉及到了继承。</p>
+<h4 id="继承">继承<a title="#继承" href="#继承"></a></h4>
+<p>我们定义一个 <code>Person</code> 类，并让 <code>Woman</code> 继承 <code>Person</code>：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">protected</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> age: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">constructor</span> (<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">        <span class="keyword">this</span>.height = height</span><br><span class="line">        <span class="keyword">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">class</span> Woman <span class="keyword">extends</span> Person &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name, height, age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman(<span class="string">'girl'</span>, <span class="number">180</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="抽象类和抽象方法">抽象类和抽象方法<a title="#抽象类和抽象方法" href="#抽象类和抽象方法"></a></h4>
+<p><strong>抽象类</strong> 和 <strong>抽象方法</strong> 的定义方式都是在前边加一个 <code>abstract</code> 关键字，不同的是，<strong>抽象类</strong> 可以包含具体的属性和函数实现，但是 <strong>抽象函数</strong> 则必须在子类中实现。换言之，<strong>抽象类</strong> 可以拥有自己的独立行为，但是 <strong>抽象函数</strong> 则跟 <strong>接口</strong>（<code>interface</code>）类似，不包括具体的实现。</p>
+<p>因此，上面的例子我们可以再进行拓展，将 <code>Person</code> 定义成一个抽象类，再让 <code>Woman</code> 继承它</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> Person &#123;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">protected</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> age: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">constructor</span> (<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">        <span class="keyword">this</span>.height = height</span><br><span class="line">        <span class="keyword">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">abstract</span> moYu (): <span class="built_in">void</span>;</span><br><span class="line">    walk (): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'walk'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">class</span> Woman <span class="keyword">extends</span> Person &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name, height, age)</span><br><span class="line">    &#125;</span><br><span class="line">    moYu () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'今天你摸鱼了吗？'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman(<span class="string">'girl'</span>, <span class="number">180</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2019/8/16/16c961f3181f6ce9?w=706&amp;h=577&amp;f=png&amp;s=29858" alt=""><br>
+这里 <code>Person</code> 的属性是否定义，取决于 <code>Person</code> 中是否存在非抽象函数，否则没有必要写。</p>
+<p>系列文章：</p>
+<ul>
+<li><a href="https://juejin.im/post/6844903913343172616" target="_blank">TypeScript 入门指北（一）</a></li>
+</ul>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://www.tslang.cn/docs/home.html" target="_blank">TypeScript 中文文档</a></li>
+</ul>
+<p>练习地址：<a href="https://www.tslang.cn/play/index.html" target="_blank" rel="noopener">https://www.tslang.cn/play/index.html</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 </html>
