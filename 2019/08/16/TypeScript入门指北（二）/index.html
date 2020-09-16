@@ -81,47 +81,42 @@
 <li><strong>类</strong></li>
 <li><strong>泛型</strong></li>
 </ul>
-<p>当然，<strong>函数</strong> 和 <strong>接口</strong> 在<a href="https://juejin.im/post/6844903913343172616" target="_blank">上篇文章</a>已经讲过了，这篇文章着重讲一下<strong>类</strong>。</p>
-<h3 id="类">类<a title="#类" href="#类"></a></h3>
-<p>在面向对象编程(<code>OOP</code>)中，类是对对象的一个高度的抽象。打个比方，女朋友可以看成一个<strong>对象</strong>，因为女朋友是具体的一个人；而女人/人则可以看成一个类，因为它是泛指的。<br>
-<img src="https://user-gold-cdn.xitu.io/2019/8/15/16c95bc844664525?w=501&amp;h=406&amp;f=png&amp;s=22955" alt=""></p>
+<p>当然，<strong>函数</strong> 和 <strong>接口</strong> 在<a href="https://juejin.im/post/6844903913343172616" target="_blank" rel="noopener">上篇文章</a>已经讲过了，这篇文章着重讲一下<strong>类</strong>。</p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>在面向对象编程(<code>OOP</code>)中，类是对对象的一个高度的抽象。打个比方，女朋友可以看成一个<strong>对象</strong>，因为女朋友是具体的一个人；而女人/人则可以看成一个类，因为它是泛指的。<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c95bc844664525?w=501&h=406&f=png&s=22955" alt=""></p>
 <p>根据这个关系，我们可以用 <code>TypeScript</code> 来定义一个 <code>Woman</code> 类并且 <code>new</code> 一个<strong>对象</strong>（女朋友）出来：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Woman &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman()</span><br></pre></td></tr></table></figure>
 <p>可以看到，这个<strong>对象</strong>什么都没有，接下来我们给她添加点属性上去，让她变得更立体一些。</p>
-<h4 id="属性">属性<a title="#属性" href="#属性"></a></h4>
-<p>属性包含：</p>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>属性包含：</p>
 <ul>
 <li><strong>私有属性</strong>（<code>private</code>）: 属性被声明为 <code>private</code>（私有）之后，不能在类之外的地方访问。</li>
 <li><strong>公有属性</strong>（<code>public</code>）：如果不标记，则属性默认被声明为 <code>public</code>（公有）。</li>
 <li><strong>保护属性</strong>（<code>protected</code>）：属性被声明为 <code>protected</code>（保护）之后，不能再类之外的地方访问，但是可以在派生类中访问，也就是说在它的子类中可以访问这个属性。</li>
 <li><strong>静态属性</strong>（<code>static</code>)：属性被声明为 <code>static</code>（静态），此时该属性属于<strong>类</strong>而不属于<strong>类</strong>的实例或者<strong>子类</strong>，相应的需要在属性前加上<strong>类名</strong>才能访问。</li>
 </ul>
-<p><img src="https://user-gold-cdn.xitu.io/2019/8/16/16c961b24af67323?w=827&amp;h=782&amp;f=png&amp;s=49956" alt="" class="φcx"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/8/16/16c961b24af67323?w=827&h=782&f=png&s=49956" alt=""></p>
 <p>我们简单拓展下上面那段代码，给 <code>Woman</code> 类添加几个属性：</p>
 <ul>
 <li>姓名</li>
 <li>身高</li>
 <li>年龄</li>
-<li>…</li>
+<li>…<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Woman &#123;</span><br><span class="line">    <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">private</span> age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+在拓展这个类的时候我们发现，其实 <code>Woman</code> 类还能够再抽象成 <strong>人类</strong>（<code>Person</code>)，而这就涉及到了继承。</li>
 </ul>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Woman &#123;</span><br><span class="line">    <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">private</span> age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在拓展这个类的时候我们发现，其实 <code>Woman</code> 类还能够再抽象成 <strong>人类</strong>（<code>Person</code>)，而这就涉及到了继承。</p>
-<h4 id="继承">继承<a title="#继承" href="#继承"></a></h4>
-<p>我们定义一个 <code>Person</code> 类，并让 <code>Woman</code> 继承 <code>Person</code>：</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>我们定义一个 <code>Person</code> 类，并让 <code>Woman</code> 继承 <code>Person</code>：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">protected</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> age: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">constructor</span> (<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">        <span class="keyword">this</span>.height = height</span><br><span class="line">        <span class="keyword">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">class</span> Woman <span class="keyword">extends</span> Person &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name, height, age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman(<span class="string">'girl'</span>, <span class="number">180</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="抽象类和抽象方法">抽象类和抽象方法<a title="#抽象类和抽象方法" href="#抽象类和抽象方法"></a></h4>
-<p><strong>抽象类</strong> 和 <strong>抽象方法</strong> 的定义方式都是在前边加一个 <code>abstract</code> 关键字，不同的是，<strong>抽象类</strong> 可以包含具体的属性和函数实现，但是 <strong>抽象函数</strong> 则必须在子类中实现。换言之，<strong>抽象类</strong> 可以拥有自己的独立行为，但是 <strong>抽象函数</strong> 则跟 <strong>接口</strong>（<code>interface</code>）类似，不包括具体的实现。</p>
+
+<h4 id="抽象类和抽象方法"><a href="#抽象类和抽象方法" class="headerlink" title="抽象类和抽象方法"></a>抽象类和抽象方法</h4><p><strong>抽象类</strong> 和 <strong>抽象方法</strong> 的定义方式都是在前边加一个 <code>abstract</code> 关键字，不同的是，<strong>抽象类</strong> 可以包含具体的属性和函数实现，但是 <strong>抽象函数</strong> 则必须在子类中实现。换言之，<strong>抽象类</strong> 可以拥有自己的独立行为，但是 <strong>抽象函数</strong> 则跟 <strong>接口</strong>（<code>interface</code>）类似，不包括具体的实现。</p>
 <p>因此，上面的例子我们可以再进行拓展，将 <code>Person</code> 定义成一个抽象类，再让 <code>Woman</code> 继承它</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> Person &#123;</span><br><span class="line">    <span class="keyword">public</span> height: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">protected</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> age: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">constructor</span> (<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">        <span class="keyword">this</span>.height = height</span><br><span class="line">        <span class="keyword">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">abstract</span> moYu (): <span class="built_in">void</span>;</span><br><span class="line">    walk (): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'walk'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">class</span> Woman <span class="keyword">extends</span> Person &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">name: <span class="built_in">string</span>, height: <span class="built_in">number</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name, height, age)</span><br><span class="line">    &#125;</span><br><span class="line">    moYu () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'今天你摸鱼了吗？'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> girlFriend = <span class="keyword">new</span> Woman(<span class="string">'girl'</span>, <span class="number">180</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://user-gold-cdn.xitu.io/2019/8/16/16c961f3181f6ce9?w=706&amp;h=577&amp;f=png&amp;s=29858" alt=""><br>
-这里 <code>Person</code> 的属性是否定义，取决于 <code>Person</code> 中是否存在非抽象函数，否则没有必要写。</p>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/8/16/16c961f3181f6ce9?w=706&h=577&f=png&s=29858" alt=""><br>这里 <code>Person</code> 的属性是否定义，取决于 <code>Person</code> 中是否存在非抽象函数，否则没有必要写。</p>
 <p>系列文章：</p>
 <ul>
-<li><a href="https://juejin.im/post/6844903913343172616" target="_blank">TypeScript 入门指北（一）</a></li>
+<li><a href="https://juejin.im/post/6844903913343172616" target="_blank" rel="noopener">TypeScript 入门指北（一）</a></li>
 </ul>
 <p>参考资料：</p>
 <ul>
-<li><a href="https://www.tslang.cn/docs/home.html" target="_blank">TypeScript 中文文档</a></li>
+<li><a href="https://www.tslang.cn/docs/home.html" target="_blank" rel="noopener">TypeScript 中文文档</a></li>
 </ul>
 <p>练习地址：<a href="https://www.tslang.cn/play/index.html" target="_blank" rel="noopener">https://www.tslang.cn/play/index.html</a></p>
 
@@ -229,6 +224,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

@@ -10,14 +10,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="JSON 是什么？
-JSON 是一种语法，可以用来序列化对象、数组或者数字等数据类型。换句话说，我们可以利用 JSON 来将数据转成字符串的形式。
-常见的 API
-JSON.parse
-
-
+    <meta name="description" content="JSON 是什么？JSON 是一种语法，可以用来序列化对象、数组或者数字等数据类型。换句话说，我们可以利用 JSON 来将数据转成字符串的形式。
+常见的 APIJSON.parse
 功能
-还,"> 
+  还原被,"> 
     <meta name="author" content="Tonychen"> 
     <link rel="alternative" href="atom.xml" title="Tonychen" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -69,35 +65,26 @@ JSON.parse
 
         </div>
         <div class="content markdown">
-            <h2 id="json-是什么？">JSON 是什么？<a title="#json-是什么？" href="#json-是什么？"></a></h2>
-<p>JSON 是一种语法，可以用来序列化对象、数组或者数字等数据类型。换句话说，我们可以利用 JSON 来将数据转成字符串的形式。</p>
-<h2 id="常见的-api">常见的 API<a title="#常见的-api" href="#常见的-api"></a></h2>
-<h3 id="json.parse">JSON.parse<a title="#json.parse" href="#json.parse"></a></h3>
-<ul>
-<li>
-<p>功能</p>
-<p>还原被序列化的数据（反序列化），即将字符串还原为它本来的数据结构。</p>
+            <h2 id="JSON-是什么？"><a href="#JSON-是什么？" class="headerlink" title="JSON 是什么？"></a>JSON 是什么？</h2><p>JSON 是一种语法，可以用来序列化对象、数组或者数字等数据类型。换句话说，我们可以利用 JSON 来将数据转成字符串的形式。</p>
+<h2 id="常见的-API"><a href="#常见的-API" class="headerlink" title="常见的 API"></a>常见的 API</h2><h3 id="JSON-parse"><a href="#JSON-parse" class="headerlink" title="JSON.parse"></a>JSON.parse</h3><ul>
+<li><p>功能</p>
+<p>  还原被序列化的数据（反序列化），即将字符串还原为它本来的数据结构。</p>
 </li>
-<li>
-<p>参数</p>
+<li><p>参数</p>
 <ul>
 <li><code>text</code>，即将要被「反序列化」的字符串</li>
 <li><code>reviver</code>，处理字符串的回调函数，可以参与到「反序列化」的过程，遍历顺序是由内到外</li>
 </ul>
 </li>
 </ul>
-<h3 id="json.stringify">JSON.stringify<a title="#json.stringify" href="#json.stringify"></a></h3>
-<ul>
-<li>
-<p>功能</p>
-<p>序列化一个值，即将一个值转为字符串的形式。</p>
+<h3 id="JSON-stringify"><a href="#JSON-stringify" class="headerlink" title="JSON.stringify"></a>JSON.stringify</h3><ul>
+<li><p>功能</p>
+<p>  序列化一个值，即将一个值转为字符串的形式。</p>
 </li>
-<li>
-<p>参数</p>
+<li><p>参数</p>
 <ul>
 <li><code>value</code>，将要被序列化的值</li>
-<li><code>replacer</code>
-<ol>
+<li><code>replacer</code><ol>
 <li>如果该值是函数，那么它会参与到序列化的过程当中</li>
 <li>如果该值是数组，那么只有包含在数组里的属性才会被序列化</li>
 <li>如果该值是 null 或者 undefined，那么所有属性都会被序列化</li>
@@ -106,30 +93,25 @@ JSON.parse
 </ul>
 </li>
 </ul>
-<h2 id="使用场景">使用场景<a title="#使用场景" href="#使用场景"></a></h2>
-<h3 id="本地缓存">本地缓存<a title="#本地缓存" href="#本地缓存"></a></h3>
-<p>经常使用的本地缓存如 <code>localStorage</code>，对于存入的数据是有要求的：键名和值都只能是 <code>string</code> 类型。<br>
-而这时 <code>JSON</code> 就可以派上用场了👇</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h3 id="本地缓存"><a href="#本地缓存" class="headerlink" title="本地缓存"></a>本地缓存</h3><p>经常使用的本地缓存如 <code>localStorage</code>，对于存入的数据是有要求的：键名和值都只能是 <code>string</code> 类型。<br>而这时 <code>JSON</code> 就可以派上用场了👇</p>
 <ul>
-<li>存储</li>
-</ul>
+<li><p>存储</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.set(key, <span class="built_in">JSON</span>.stringify(data))</span><br></pre></td></tr></table></figure>
-<ul>
-<li>提取</li>
-</ul>
+</li>
+<li><p>提取</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.getItem(key, <span class="built_in">JSON</span>.parse(str))</span><br></pre></td></tr></table></figure>
-<h4 id="处理-date-对象">处理 Date 对象<a title="#处理-date-对象" href="#处理-date-对象"></a></h4>
-<p>如果对象里有 <code>Date</code> 对象，那么序列化之后结果是这样的👇</p>
+
+</li>
+</ul>
+<h4 id="处理-Date-对象"><a href="#处理-Date-对象" class="headerlink" title="处理 Date 对象"></a>处理 Date 对象</h4><p>如果对象里有 <code>Date</code> 对象，那么序列化之后结果是这样的👇</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"2020-07-29T14:47:09.608Z"</span></span><br></pre></td></tr></table></figure>
-<p>这时候就头疼了，我们需要再写一个函数来处理反序列化之后的结果吗？<br>
-<img src="/images/JSON/1.jpeg" alt=""></p>
+<p>这时候就头疼了，我们需要再写一个函数来处理反序列化之后的结果吗？<br><img src="/images/JSON/1.jpeg" alt=""></p>
 <p>别忘了上面提到的参数，无论是 <code>parse</code> 还是 <code>stringify</code> 都允许传入一个参数来控制序列化/反序列化，因此我们可以这样来处理 <code>Date</code> 的对象👇</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    text: <span class="string">'just do it'</span>,</span><br><span class="line">    date: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> str = <span class="built_in">JSON</span>.stringify(obj)</span><br><span class="line"><span class="keyword">let</span> org = <span class="built_in">JSON</span>.parse(str, (key, val) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 如果是 date 就转成 Date</span></span><br><span class="line">    <span class="keyword">if</span> (key === <span class="string">'date'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="处理-regexp-对象">处理 RegExp 对象<a title="#处理-regexp-对象" href="#处理-regexp-对象"></a></h4>
-<p>现在场景更加复杂了，你需要处理 <code>RegExp</code> 对象了，这时候要怎么做呢？手快的同学可能就直接开动了👇</p>
+
+<h4 id="处理-RegExp-对象"><a href="#处理-RegExp-对象" class="headerlink" title="处理 RegExp 对象"></a>处理 RegExp 对象</h4><p>现在场景更加复杂了，你需要处理 <code>RegExp</code> 对象了，这时候要怎么做呢？手快的同学可能就直接开动了👇</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    reg: <span class="regexp">/\d+/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> str = <span class="built_in">JSON</span>.stringify(obj)</span><br><span class="line"><span class="keyword">let</span> org = <span class="built_in">JSON</span>.parse(str)</span><br></pre></td></tr></table></figure>
-<p>实际上，直接序列化一个 <code>RegExp</code> 对象只会返回一个 <code>&quot;{}&quot;</code>（不信你试试）<br>
-<img src="/images/JSON/2.jpg" alt=""></p>
+<p>实际上，直接序列化一个 <code>RegExp</code> 对象只会返回一个 <code>&quot;{}&quot;</code>（不信你试试）<br><img src="/images/JSON/2.jpg" alt=""></p>
 <p>别忘了，<code>RegExp</code>  构造函数可以传入这两个参数：</p>
 <ul>
 <li><code>source</code></li>
@@ -137,11 +119,11 @@ JSON.parse
 </ul>
 <p>因此我们只要对包含 <code>RegExp</code> 对象的属性在序列化与反序列化时做特别处理即可👇</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 序列化 RegExp 对象</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">reg</span>: <span class="regexp">/\d+/</span> &#125;</span><br><span class="line"><span class="keyword">let</span> str = <span class="built_in">JSON</span>.stringify(obj, (key, val) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (key === <span class="string">'reg'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            source: val.source,</span><br><span class="line">            flags: val.flags</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 反序列化</span></span><br><span class="line"><span class="keyword">let</span> org = <span class="built_in">JSON</span>.stringify(str, (key, val) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (key === <span class="string">'reg'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(val.source, val.flags)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="判断对象是否为空">判断对象是否为空<a title="#判断对象是否为空" href="#判断对象是否为空"></a></h3>
-<p>我们也可以利用 <code>JSON.stringify</code> 来判断某个对象是否为空（没有任何属性）👇</p>
+
+<h3 id="判断对象是否为空"><a href="#判断对象是否为空" class="headerlink" title="判断对象是否为空"></a>判断对象是否为空</h3><p>我们也可以利用 <code>JSON.stringify</code> 来判断某个对象是否为空（没有任何属性）👇</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isObjectEmpty = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(obj) === <span class="string">'&#123;&#125;'</span> &amp;&amp; !obj.__proto__</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结">总结<a title="#总结" href="#总结"></a></h2>
-<p><img src="/images/JSON/3.svg" alt="" class="φcx"></p>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/images/JSON/3.svg" alt=""></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
@@ -247,6 +229,25 @@ JSON.parse
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

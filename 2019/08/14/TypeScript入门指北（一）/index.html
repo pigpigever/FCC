@@ -10,8 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="前言
-随着前端在各种类型的项目中扮演的角色越来越重要，人们发现 JavaScript 这门弱类型语言已经不能满足当下的需求，尤其是在一些大中型项目中，JavaScript 远远没有一些强类型语言用得,"> 
+    <meta name="description" content="前言随着前端在各种类型的项目中扮演的角色越来越重要，人们发现 JavaScript 这门弱类型语言已经不能满足当下的需求，尤其是在一些大中型项目中，JavaScript 远远没有一些强类型语言用得顺,"> 
     <meta name="author" content="Tonychen"> 
     <link rel="alternative" href="atom.xml" title="Tonychen" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -63,97 +62,57 @@
 
         </div>
         <div class="content markdown">
-            <h2 id="前言">前言<a title="#前言" href="#前言"></a></h2>
-<p>随着前端在各种类型的项目中扮演的角色越来越重要，人们发现 <code>JavaScript</code> 这门弱类型语言已经不能满足当下的需求，尤其是在一些<strong>大中型</strong>项目中，<code>JavaScript</code> 远远没有一些强类型语言用得顺手，而 <code>TypeScript</code> 因此诞生。</p>
-<h2 id="typescript-是什么？">TypeScript 是什么？<a title="#typescript-是什么？" href="#typescript-是什么？"></a></h2>
-<p>简单来讲，<code>TypeScript</code> 是 <code>JavaScript</code> 的超集，它可以编译成纯 <code>JavaScript</code>。</p>
-<h2 id="基础语法">基础语法<a title="#基础语法" href="#基础语法"></a></h2>
-<h3 id="基础类型">基础类型<a title="#基础类型" href="#基础类型"></a></h3>
-<p>由于 <code>TypeScript</code> 是在 <code>JavaScript</code> 的基础上定义的，所以基础类型其实也是大同小异，这里仅列出来和 <code>JavaScript</code> 做一个对比。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着前端在各种类型的项目中扮演的角色越来越重要，人们发现 <code>JavaScript</code> 这门弱类型语言已经不能满足当下的需求，尤其是在一些<strong>大中型</strong>项目中，<code>JavaScript</code> 远远没有一些强类型语言用得顺手，而 <code>TypeScript</code> 因此诞生。</p>
+<h2 id="TypeScript-是什么？"><a href="#TypeScript-是什么？" class="headerlink" title="TypeScript 是什么？"></a>TypeScript 是什么？</h2><p>简单来讲，<code>TypeScript</code> 是 <code>JavaScript</code> 的超集，它可以编译成纯 <code>JavaScript</code>。</p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h3><p>由于 <code>TypeScript</code> 是在 <code>JavaScript</code> 的基础上定义的，所以基础类型其实也是大同小异，这里仅列出来和 <code>JavaScript</code> 做一个对比。</p>
 <ul>
-<li><strong>布尔值</strong><br>
-声明方式：<code>let a: boolean = true</code><br>
-对比：<code>JavaScript</code> 中也存在布尔值类型。</li>
-<li><strong>数字</strong><br>
-声明方式：<code>let a: number = 2</code><br>
-对比：<code>JavaScript</code> 中也存在数字类型。</li>
-<li><strong>字符串</strong><br>
-声明方式：<code>let a: string = '233'</code><br>
-对比：<code>JavaScript</code> 中也存在字符串类型。</li>
-<li><strong>数组</strong><br>
-声明方式：<code>let a: number[] = [1,2,3]</code><br>
-对比：<code>JavaScript</code> 中也存在数组类型。</li>
-<li><strong>元组 Tuple</strong><br>
-声明方式：<code>let a: [number, string]</code><br>
-对比：<code>JavaScript</code> 中不存在这种类型。<br>
-说明：定义一个元组，相当于定义一个规定类型的数组；比如上面的变量 <code>a</code> ，前两个元素只能对应 <code>number</code> 类型和 <code>string</code> 类型，而之后的元素的类型也只能是 <code>number</code> 和 <code>string</code> 中的一种。</li>
-<li><strong>枚举</strong><br>
-声明方式：<code>enum animal = {cat, dog, duck}</code>，<code>let a: animal = animal.cat</code>，跟其他语言一样，如果不赋值的话，枚举值从 <code>0</code> 到 <code>n</code>，当然也可以选择手动赋值。<br>
-对比：<code>JavaScript</code> 中不存在这种类型，不过枚举也可以简单的用声明常量的方式来代替。</li>
-<li><strong>Any</strong><br>
-声明方式：<code>let a: any = '2333'</code><br>
-对比：<code>JavaScript</code> 中不存在这种类型。<br>
-说明：声明一个 <code>any</code> 类型的变量，通常它表示所有类型的变量。</li>
-<li><strong>Void</strong><br>
-声明方式：<code>let gg: void = undefined</code><br>
-对比：<code>JavaScript</code> 中存在 <code>void</code>，但它不是变量类型，而是一个操作符</li>
-<li><strong>Null</strong><br>
-声明方式：<code>let a: null = null</code><br>
-对比：<code>JavaScript</code> 中存在 <code>Null</code> 类型。<br>
-说明：<code>Null</code> 类型可以看成其他类型的子类型，也就是说 <code>Null</code> 类型的变量也可以赋值给其他类型的变量并且不会报错。</li>
-<li><strong>Undefined</strong><br>
-声明方式：<code>let a: undefined = undefined</code><br>
-对比：<code>JavaScript</code> 中存在 <code>Undefined</code> 类型。<br>
-说明：<code>Undefined</code> 类型同上面所说的 <code>Null</code> 一样，也是其他类型的子类型。</li>
-<li><strong>Never</strong><br>
-声明方式：无法声明，因为其他类型的变量不能给 <code>never</code> 类型的变量赋值。<code>never</code> 类型只能从函数返回值中获取。<br>
-对比：<code>JavaScript</code> 中不存在 <code>never</code> 类型。<br>
-说明：<code>never</code> 类型表示的是那些永不存在的值的类型。</li>
-<li><strong>Object</strong><br>
-声明方式：<code>let a: object = {}</code><br>
-对比：<code>JavaScript</code> 中存在 <code>object</code> 类型</li>
+<li><strong>布尔值</strong><br>声明方式：<code>let a: boolean = true</code><br>对比：<code>JavaScript</code> 中也存在布尔值类型。</li>
+<li><strong>数字</strong><br>声明方式：<code>let a: number = 2</code><br>对比：<code>JavaScript</code> 中也存在数字类型。</li>
+<li><strong>字符串</strong><br>声明方式：<code>let a: string = &#39;233&#39;</code><br>对比：<code>JavaScript</code> 中也存在字符串类型。</li>
+<li><strong>数组</strong><br>声明方式：<code>let a: number[] = [1,2,3]</code><br>对比：<code>JavaScript</code> 中也存在数组类型。</li>
+<li><strong>元组 Tuple</strong><br>声明方式：<code>let a: [number, string]</code><br>对比：<code>JavaScript</code> 中不存在这种类型。<br>说明：定义一个元组，相当于定义一个规定类型的数组；比如上面的变量 <code>a</code> ，前两个元素只能对应 <code>number</code> 类型和 <code>string</code> 类型，而之后的元素的类型也只能是 <code>number</code> 和 <code>string</code> 中的一种。  </li>
+<li><strong>枚举</strong><br>声明方式：<code>enum animal = {cat, dog, duck}</code>，<code>let a: animal = animal.cat</code>，跟其他语言一样，如果不赋值的话，枚举值从 <code>0</code> 到 <code>n</code>，当然也可以选择手动赋值。<br>对比：<code>JavaScript</code> 中不存在这种类型，不过枚举也可以简单的用声明常量的方式来代替。</li>
+<li><strong>Any</strong><br>声明方式：<code>let a: any = &#39;2333&#39;</code><br>对比：<code>JavaScript</code> 中不存在这种类型。<br>说明：声明一个 <code>any</code> 类型的变量，通常它表示所有类型的变量。</li>
+<li><strong>Void</strong><br>声明方式：<code>let gg: void = undefined</code><br>对比：<code>JavaScript</code> 中存在 <code>void</code>，但它不是变量类型，而是一个操作符</li>
+<li><strong>Null</strong><br>声明方式：<code>let a: null = null</code><br>对比：<code>JavaScript</code> 中存在 <code>Null</code> 类型。<br>说明：<code>Null</code> 类型可以看成其他类型的子类型，也就是说 <code>Null</code> 类型的变量也可以赋值给其他类型的变量并且不会报错。</li>
+<li><strong>Undefined</strong><br>声明方式：<code>let a: undefined = undefined</code><br>对比：<code>JavaScript</code> 中存在 <code>Undefined</code> 类型。<br>说明：<code>Undefined</code> 类型同上面所说的 <code>Null</code> 一样，也是其他类型的子类型。</li>
+<li><strong>Never</strong><br>声明方式：无法声明，因为其他类型的变量不能给 <code>never</code> 类型的变量赋值。<code>never</code> 类型只能从函数返回值中获取。<br>对比：<code>JavaScript</code> 中不存在 <code>never</code> 类型。<br>说明：<code>never</code> 类型表示的是那些永不存在的值的类型。</li>
+<li><strong>Object</strong><br>声明方式：<code>let a: object = {}</code><br>对比：<code>JavaScript</code> 中存在 <code>object</code> 类型  </li>
 </ul>
-<h3 id="接口">接口<a title="#接口" href="#接口"></a></h3>
-<blockquote>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><blockquote>
 <p><code>TypeScript</code> 的核心原则之一是对值所具有的结构进行类型检查。 它有时被称做“鸭式辨型法”或“结构性子类型化”。 在 <code>TypeScript</code> 里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
 </blockquote>
-<p>简单来说，接口（interface）存在的意义是为了对复杂类型（object）的存在进行约束。<br>
-比方说有一个对象 <strong>person</strong>，它有以下这些属性：</p>
+<p>简单来说，接口（interface）存在的意义是为了对复杂类型（object）的存在进行约束。<br>比方说有一个对象 <strong>person</strong>，它有以下这些属性：</p>
 <ul>
 <li>姓名</li>
 <li>身高</li>
 <li>体重</li>
 <li>…</li>
-<li></li>
+<li>由于 <strong>person</strong> 是一个复杂的对象，使用接口（interface）则可以对它进行一个严格的约束。比如：  <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">    name: <span class="built_in">string</span>,</span><br><span class="line">    height: <span class="built_in">number</span>,</span><br><span class="line">    weight: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h4></li>
 </ul>
-<p>由于 <strong>person</strong> 是一个复杂的对象，使用接口（interface）则可以对它进行一个严格的约束。比如：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">    name: <span class="built_in">string</span>,</span><br><span class="line">    height: <span class="built_in">number</span>,</span><br><span class="line">    weight: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="可选属性">可选属性<a title="#可选属性" href="#可选属性"></a></h4>
 <blockquote>
 <p>接口里的属性不全都是必需的。 有些是只在某些条件下存在，或者根本不存在。 可选属性在应用“option bags”模式时很常用，即给函数传入的参数对象中只有部分属性赋值了。</p>
 </blockquote>
-<p><strong>可选属性</strong> 的存在其实跟你有没有男/女朋友的关系是一样的，有固然好，没有也不会怎么样。不过你要是男女通吃那我也拿你没办法…<br>
-以此为例子，我们拓展下上面的代码：</p>
+<p><strong>可选属性</strong> 的存在其实跟你有没有男/女朋友的关系是一样的，有固然好，没有也不会怎么样。不过你要是男女通吃那我也拿你没办法…<br>以此为例子，我们拓展下上面的代码：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">    name: <span class="built_in">string</span>,</span><br><span class="line">    height: <span class="built_in">number</span>,</span><br><span class="line">    weight: <span class="built_in">number</span>,</span><br><span class="line">    girlFriend?: object,</span><br><span class="line">    boyFriend?: object</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="只读属性">只读属性<a title="#只读属性" href="#只读属性"></a></h4>
-<blockquote>
+
+<h4 id="只读属性"><a href="#只读属性" class="headerlink" title="只读属性"></a>只读属性</h4><blockquote>
 <p>如果有些属性只想赋值一次，那么只读属性就可以派上用场。</p>
 </blockquote>
-<p>比方说我们的身高，在一定年龄后就不会再长，那么其实也可以把它近似的看成一个只读属性。</p>
+<p>比方说我们的身高，在一定年龄后就不会再长，那么其实也可以把它近似的看成一个只读属性。   </p>
 <p>因此我们上面的代码也可以这样写。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">    name: <span class="built_in">string</span>,</span><br><span class="line">    readonly height: <span class="built_in">number</span>,</span><br><span class="line">    weight: <span class="built_in">number</span>,</span><br><span class="line">    girlFriend?: object,</span><br><span class="line">    boyFriend?: object</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="函数">函数<a title="#函数" href="#函数"></a></h3>
-<blockquote>
+
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote>
 <p>和 <code>JavaScript</code> 一样，<code>TypeScript</code> 函数可以创建有名字的函数和匿名函数。 你可以随意选择适合应用程序的方式，不论是定义一系列 <code>API</code> 函数还是只使用一次的函数。</p>
 </blockquote>
-<p><code>TypeScript</code> 中的函数跟 <code>JavaScript</code> 在书写方式上区别并不算很大，比如说定义一个 <code>add</code> 函数：<br>
-使用 <code>JavaScript</code> 是这样写的：</p>
+<p><code>TypeScript</code> 中的函数跟 <code>JavaScript</code> 在书写方式上区别并不算很大，比如说定义一个 <code>add</code> 函数：<br>使用 <code>JavaScript</code> 是这样写的：  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用 <code>TypeScript</code> 是这样写的：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>那么 <code>TypeScript</code> 的函数就没点其他的功能了吗？其实还是有的。</p>
-<h5 id="可选参数和默认参数">可选参数和默认参数<a title="#可选参数和默认参数" href="#可选参数和默认参数"></a></h5>
-<ul>
+<h5 id="可选参数和默认参数"><a href="#可选参数和默认参数" class="headerlink" title="可选参数和默认参数"></a>可选参数和默认参数</h5><ul>
 <li><strong>可选参数</strong>：函数的参数可选</li>
 <li><strong>默认参数</strong>：函数的参数设置默认值</li>
 </ul>
@@ -163,18 +122,18 @@
 <p><strong>默认参数</strong>的写法：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">string</span>, c = <span class="literal">false</span></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a, b, c)</span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="number">1</span>,<span class="string">'gg'</span>) <span class="comment">// 1, 'gg', false</span></span><br></pre></td></tr></table></figure>
 <p>这里的<strong>默认参数</strong>跟 <code>JavaScript</code> 中的写法是等价的。</p>
-<h4 id="重载">重载<a title="#重载" href="#重载"></a></h4>
-<blockquote>
+<h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><blockquote>
 <p>函数重载意味着允许存在相同函数名，但是参数类型、个数、返回值其中的一个或多个不相同的函数。</p>
 </blockquote>
 <p>当然，我们来看个简单的例子会更加清晰明了。比如说你的老大让你写一个 <code>swap</code> 函数，相信在座的各位前端er都能写出：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> tmp = arr[i]</span><br><span class="line">    arr[i] = arr[j]</span><br><span class="line">    arr[j] = tmp</span><br><span class="line">    <span class="comment">// [arr[i], arr[j]] = [arr[j], arr[i]] 利用解构也可以这样写</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果用 <code>TypeScript</code> 那就要指定参数 <code>arr</code> 的类型了，如果指定了 <code>number[]</code> 或者 <code>string[]</code> 之类的，那么未免太死板了；但是如果指定了 <code>any</code> 类型，那又没办法约束参数。而函数重载在这个时候就发挥了它的作用：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">arr: <span class="built_in">number</span>[], i: <span class="built_in">number</span>, j: <span class="built_in">number</span></span>)</span></span><br><span class="line"><span class="function"><span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">arr: <span class="built_in">string</span>[], i: <span class="built_in">number</span>, j: <span class="built_in">number</span></span>)</span></span></span><br><span class="line"><span class="function"><span class="function"><span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>) </span>&#123;</span></span></span><br><span class="line"><span class="function"><span class="function">    [<span class="title">arr</span>[<span class="title">i</span>], <span class="title">arr</span>[<span class="title">j</span>]] = [<span class="title">arr</span>[<span class="title">j</span>], <span class="title">arr</span>[<span class="title">i</span>]]</span></span></span><br><span class="line"><span class="function"><span class="function">&#125;</span></span></span><br></pre></td></tr></table></figure>
+
 <p>练习地址：<a href="https://www.tslang.cn/play/index.html" target="_blank" rel="noopener">https://www.tslang.cn/play/index.html</a></p>
 <p>参考资料：</p>
 <ul>
-<li><a href="https://www.tslang.cn/docs/home.html" target="_blank">TypeScript 中文文档</a></li>
+<li><a href="https://www.tslang.cn/docs/home.html" target="_blank" rel="noopener">TypeScript 中文文档</a></li>
 </ul>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
@@ -281,6 +240,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

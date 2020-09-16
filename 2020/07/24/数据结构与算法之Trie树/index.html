@@ -10,11 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="前言
-这个系列文章会梳理一些常见的数据结构以及对应的实现方式。本文是第一篇，感兴趣的朋友可以关注一下～
-什么是 Trie 树
-概念
-Trie 树又称为「字典树」，为了与 Tree 区分开来，通常将 ,"> 
+    <meta name="description" content="前言这个系列文章会梳理一些常见的数据结构以及对应的实现方式。本文是第一篇，感兴趣的朋友可以关注一下～
+什么是 Trie 树概念Trie 树又称为「字典树」，为了与 Tree 区分开来，通常将 Tri,"> 
     <meta name="author" content="Tonychen"> 
     <link rel="alternative" href="atom.xml" title="Tonychen" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -66,54 +63,43 @@ Trie 树又称为「字典树」，为了与 Tree 区分开来，通常将 ,">
 
         </div>
         <div class="content markdown">
-            <h2 id="前言">前言<a title="#前言" href="#前言"></a></h2>
-<p>这个系列文章会梳理一些常见的数据结构以及对应的实现方式。本文是第一篇，感兴趣的朋友可以关注一下～</p>
-<h2 id="什么是-trie-树">什么是 Trie 树<a title="#什么是-trie-树" href="#什么是-trie-树"></a></h2>
-<h3 id="概念">概念<a title="#概念" href="#概念"></a></h3>
-<p>Trie 树又称为「字典树」，为了与 Tree 区分开来，通常将 Trie 树读作 Try 树，《算法4》上又将这种数据结构称作「单词查找树」。</p>
-<h3 id="结构">结构<a title="#结构" href="#结构"></a></h3>
-<p>🧐那么这种数据结构有什么用呢？通常在需要前缀匹配时会用到 Trie 树，因为它特殊的结构导致其在查找前缀的时间复杂度为 $O(m)$，其中 <code>m</code> 为前缀的键长。<br>
-假设我们需要构建字符数组 <code>['by', 'sea', 'sells', 'she', 'shells', 'the']</code> 形成的 Trie 树，它的数据结构应该是这样的👇</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这个系列文章会梳理一些常见的数据结构以及对应的实现方式。本文是第一篇，感兴趣的朋友可以关注一下～</p>
+<h2 id="什么是-Trie-树"><a href="#什么是-Trie-树" class="headerlink" title="什么是 Trie 树"></a>什么是 Trie 树</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>Trie 树又称为「字典树」，为了与 Tree 区分开来，通常将 Trie 树读作 Try 树，《算法4》上又将这种数据结构称作「单词查找树」。</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>🧐那么这种数据结构有什么用呢？通常在需要前缀匹配时会用到 Trie 树，因为它特殊的结构导致其在查找前缀的时间复杂度为 $O(m)$，其中 <code>m</code> 为前缀的键长。<br>假设我们需要构建字符数组 <code>[&#39;by&#39;, &#39;sea&#39;, &#39;sells&#39;, &#39;she&#39;, &#39;shells&#39;, &#39;the&#39;]</code> 形成的 Trie 树，它的数据结构应该是这样的👇</p>
 <img src="/images/trie/trie.png" height="600">
+
 <p>可以看出，对于前缀相同的情况，这样的数据结构是能省下很多空间的～</p>
-<h3 id="场景">场景<a title="#场景" href="#场景"></a></h3>
-<ul>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ul>
 <li>搜索自动补全</li>
 <li>拼写检查</li>
 <li>IP 路由最长前缀匹配</li>
 <li>九宫格打字预测</li>
 </ul>
-<h2 id="常见操作">常见操作<a title="#常见操作" href="#常见操作"></a></h2>
-<h3 id="定义">定义<a title="#定义" href="#定义"></a></h3>
-<p>根据上面提供的图示我们知道，Trie 树需要一个 <code>root</code> 节点指向其他键值，同时我们还需要一个 <code>key</code> 来标记到当前字符是某个单词的结尾。</p>
+<h2 id="常见操作"><a href="#常见操作" class="headerlink" title="常见操作"></a>常见操作</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>根据上面提供的图示我们知道，Trie 树需要一个 <code>root</code> 节点指向其他键值，同时我们还需要一个 <code>key</code> 来标记到当前字符是某个单词的结尾。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TrieNode</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.next = &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.isEnd = fasle</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Trie</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.root = <span class="keyword">new</span> TrieNode()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="插入">插入<a title="#插入" href="#插入"></a></h3>
-<p>将字符串 <code>word</code> 插入到 Trie 树中👇</p>
+
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>将字符串 <code>word</code> 插入到 Trie 树中👇</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Trie.prototype.insert = <span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> &#123; root &#125; = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; word.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!root.next[word[i]]) &#123;</span><br><span class="line">            root.next[word[i]] = <span class="keyword">new</span> TrieNode()</span><br><span class="line">        &#125;</span><br><span class="line">        root = root.next[word[i]]</span><br><span class="line">    &#125;</span><br><span class="line">    root.isEnd = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查找">查找<a title="#查找" href="#查找"></a></h3>
-<p>从 Trie 树中查找指定的 <code>word</code> 👇</p>
+
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>从 Trie 树中查找指定的 <code>word</code> 👇</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Trie.prototype.search = <span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> helper = <span class="function">(<span class="params">root, index</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index === word.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> root.isEnd</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (root.next[word[index]]) &#123;</span><br><span class="line">            <span class="keyword">return</span> helper(root.next[word[index]], index + <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> helper(<span class="keyword">this</span>.root, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="trie-树的优化">Trie 树的优化<a title="#trie-树的优化" href="#trie-树的优化"></a></h2>
-<h3 id="传统-trie-树的缺点">传统 Trie 树的缺点<a title="#传统-trie-树的缺点" href="#传统-trie-树的缺点"></a></h3>
-<p>假设某个 Trie 树是由字符数组 <code>['shells', 'shellfish']</code> 组成的 👇</p>
+
+<h2 id="Trie-树的优化"><a href="#Trie-树的优化" class="headerlink" title="Trie 树的优化"></a>Trie 树的优化</h2><h3 id="传统-Trie-树的缺点"><a href="#传统-Trie-树的缺点" class="headerlink" title="传统 Trie 树的缺点"></a>传统 Trie 树的缺点</h3><p>假设某个 Trie 树是由字符数组 <code>[&#39;shells&#39;, &#39;shellfish&#39;]</code> 组成的 👇</p>
 <img src="/images/trie/trie-2.png" height="600">
+
 <p>可以看到，虽然说相同的字符串前缀来说这部分空间没有浪费，但是 Trie 中存在的大量单向分支却造成了大量的空间浪费（因为很多结点实际上只用过一次，但是却重复出现）。</p>
-<h3 id="三向-trie-树">三向 Trie 树<a title="#三向-trie-树" href="#三向-trie-树"></a></h3>
-<p>为了解决传统 Trie 树的缺点，有人提出了三向 Trie 树的结构，其结点的组成为：</p>
+<h3 id="三向-Trie-树"><a href="#三向-Trie-树" class="headerlink" title="三向 Trie 树"></a>三向 Trie 树</h3><p>为了解决传统 Trie 树的缺点，有人提出了三向 Trie 树的结构，其结点的组成为：</p>
 <ul>
 <li>字符</li>
 <li>三个指针（分别指向小于、等于、大于当前字符的结点）</li>
 <li>值</li>
 </ul>
-<h4 id="定义-1">定义<a title="#定义-1" href="#定义-1"></a></h4>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TrieNode</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.val = val</span><br><span class="line">    <span class="keyword">this</span>.left = &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.mid = &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.right = &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.isEnd = <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Trie</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.root = <span class="keyword">new</span> TrieNode()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="插入-1">插入<a title="#插入-1" href="#插入-1"></a></h4>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Trie.prototype.insert = <span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> &#123; root &#125; = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; word.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">Object</span>.keys(root.mid)[<span class="number">0</span>]) &#123;</span><br><span class="line">            root.mid[word[i]] = <span class="keyword">new</span> TrieNode()</span><br><span class="line">            root = root.mid[word[i]]</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.mid[word[i]]) &#123;</span><br><span class="line">            root = root.mid[word[i]]</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Object</span>.keys(root.mid)[<span class="number">0</span>] &gt; word[i]) &#123;</span><br><span class="line">            root.left[word[i]] = <span class="keyword">new</span> TrieNode()</span><br><span class="line">            root = root.left[word[i]]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            root.right[word[i]] = <span class="keyword">new</span> TrieNode()</span><br><span class="line">            root = root.right[word[i]]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    root.isEnd = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="查找-1">查找<a title="#查找-1" href="#查找-1"></a></h4>
-<h2 id="总结">总结<a title="#总结" href="#总结"></a></h2>
-<p><img src="/images/trie/trie-3.png" alt="" class="φcx"></p>
-<h2 id="参考资料">参考资料<a title="#参考资料" href="#参考资料"></a></h2>
-<ul>
+<h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TrieNode</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.val = val</span><br><span class="line">    <span class="keyword">this</span>.left = &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.mid = &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.right = &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.isEnd = <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Trie</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.root = <span class="keyword">new</span> TrieNode()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="插入-1"><a href="#插入-1" class="headerlink" title="插入"></a>插入</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Trie.prototype.insert = <span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> &#123; root &#125; = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; word.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">Object</span>.keys(root.mid)[<span class="number">0</span>]) &#123;</span><br><span class="line">            root.mid[word[i]] = <span class="keyword">new</span> TrieNode()</span><br><span class="line">            root = root.mid[word[i]]</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.mid[word[i]]) &#123;</span><br><span class="line">            root = root.mid[word[i]]</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Object</span>.keys(root.mid)[<span class="number">0</span>] &gt; word[i]) &#123;</span><br><span class="line">            root.left[word[i]] = <span class="keyword">new</span> TrieNode()</span><br><span class="line">            root = root.left[word[i]]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            root.right[word[i]] = <span class="keyword">new</span> TrieNode()</span><br><span class="line">            root = root.right[word[i]]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    root.isEnd = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查找-1"><a href="#查找-1" class="headerlink" title="查找"></a>查找</h4><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/images/trie/trie-3.png" alt=""></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>《算法》（第4版）</li>
 </ul>
 
@@ -221,6 +207,25 @@ Trie 树又称为「字典树」，为了与 Tree 区分开来，通常将 ,">
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

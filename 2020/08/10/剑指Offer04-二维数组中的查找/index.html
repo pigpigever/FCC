@@ -10,10 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="题目
-在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
+    <meta name="description" content="题目在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
 示例:
-,"> 
+现,"> 
     <meta name="author" content="Tonychen"> 
     <link rel="alternative" href="atom.xml" title="Tonychen" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -65,21 +64,18 @@
 
         </div>
         <div class="content markdown">
-            <h2 id="题目">题目<a title="#题目" href="#题目"></a></h2>
-<p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
 <p>示例:</p>
 <p>现有矩阵 matrix 如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [1,   4,  7, 11, 15],</span><br><span class="line">  [2,   5,  8, 12, 19],</span><br><span class="line">  [3,   6,  9, 16, 22],</span><br><span class="line">  [10, 13, 14, 17, 24],</span><br><span class="line">  [18, 21, 23, 26, 30]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>给定 target = 5，返回 true。<br>
-给定 target = 20，返回 false。</p>
+<p>给定 target = 5，返回 true。<br>给定 target = 20，返回 false。</p>
 <p>限制：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0 &lt;&#x3D; n &lt;&#x3D; 1000</span><br><span class="line">0 &lt;&#x3D; m &lt;&#x3D; 1000</span><br></pre></td></tr></table></figure>
-<h2 id="解题思路">解题思路<a title="#解题思路" href="#解题思路"></a></h2>
-<h3 id="思路一：暴力搜索">思路一：暴力搜索<a title="#思路一：暴力搜索" href="#思路一：暴力搜索"></a></h3>
-<p>直接搜索矩阵 <code>matrix</code>，搜得到就返回 <code>true</code>，否则返回 <code>false</code>。</p>
+
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="思路一：暴力搜索"><a href="#思路一：暴力搜索" class="headerlink" title="思路一：暴力搜索"></a>思路一：暴力搜索</h3><p>直接搜索矩阵 <code>matrix</code>，搜得到就返回 <code>true</code>，否则返回 <code>false</code>。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">matrix</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findNumberIn2DArray = <span class="function"><span class="keyword">function</span>(<span class="params">matrix, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> matrix.some(<span class="function">(<span class="params">nums</span>) =&gt;</span> nums.some(<span class="function"><span class="params">num</span> =&gt;</span> num === target))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="思路二：利用规律">思路二：利用规律<a title="#思路二：利用规律" href="#思路二：利用规律"></a></h3>
-<p>我们可以从左下角开始搜索，其中：</p>
+
+<h3 id="思路二：利用规律"><a href="#思路二：利用规律" class="headerlink" title="思路二：利用规律"></a>思路二：利用规律</h3><p>我们可以从左下角开始搜索，其中：</p>
 <ul>
 <li>当 <code>matrix[i][j] &lt; target</code>，说明需要往右边搜索，此时 <code>j++</code></li>
 <li>当 <code>matrix[i][j] &gt; target</code>，说明需要往上边搜索，此时 <code>i--</code></li>
@@ -191,6 +187,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 
